@@ -1,0 +1,1606 @@
+# EDUGUARD
+# COMPREHENSIVE GOVERNMENT & PRIVATE SCHOOL INTEGRATION SPECIFICATION
+
+## 1. CORE PLATFORM OBJECTIVE
+
+EduGuard is a centralized Education Department Management, School Administration, Public Complaint, Monitoring, and Inspection Platform.
+
+The platform must manage BOTH:
+
+1. Government Schools
+2. Private Schools
+
+The platform must not prioritize one school category over the other. Both school categories must be treated as first-class entities with complete support throughout the application.
+
+The Education Minister / Super Admin is responsible for supervising the entire education ecosystem.
+
+The system must support multiple provinces, districts, cities, school types, education levels, school owners, government representatives, teachers, parents, students, and inspection officers.
+
+The application should be scalable enough to support thousands of schools and hundreds of thousands of users.
+
+IMPORTANT:
+Do not implement government and private schools as two separate applications. Build one centralized platform with shared functionality, ownership-specific permissions, and configurable workflows.
+
+---
+
+# 2. SCHOOL OWNERSHIP CLASSIFICATION
+
+Every school must have a mandatory ownership classification.
+
+### Government School
+
+A government-owned and government-operated educational institution.
+
+Examples of government school categories:
+
+- Government Primary School
+- Government Elementary School
+- Government Secondary School
+- Government Higher Secondary School
+- Government Girls School
+- Government Boys School
+- Government Model School
+- Government Special Education School
+- Government Technical School
+
+### Private School
+
+An independently owned or privately operated educational institution.
+
+Examples:
+
+- Private Primary School
+- Private Elementary School
+- Private Secondary School
+- Private Higher Secondary School
+- Private International School
+- Private Montessori School
+- Private Islamic School
+- Private Special Education School
+- Private Technical School
+
+Allow the Super Admin to add, edit, disable, and manage school categories.
+
+### Ownership Type Database Values
+
+schoolType:
+
+- GOVERNMENT
+- PRIVATE
+
+Do not allow schools to change their ownership category themselves after registration approval.
+
+An ownership change must require an official administrative review and audit record.
+
+---
+
+# 3. GOVERNMENT SCHOOL REGISTRATION WORKFLOW
+
+Government schools require a different registration workflow from private schools.
+
+Government schools may be registered by an authorized government representative, such as:
+
+- School Principal
+- Head Teacher
+- Government School Administrator
+- Authorized Education Officer
+
+### Government School Registration Form
+
+#### A. Official School Information
+
+- Official school name
+- Government school code
+- EMIS code, if applicable
+- School registration/reference number
+- School ownership: GOVERNMENT
+- School category
+- Education levels
+- Gender classification
+- Established year
+- School operating status
+- School logo
+- School photographs
+
+#### B. Government Department Information
+
+- Province
+- District
+- Tehsil
+- Union Council
+- Education department
+- Administrative region
+- Relevant education authority
+- Government department reference number
+
+#### C. School Location
+
+- Complete address
+- City
+- District
+- Province
+- Postal code
+- Latitude
+- Longitude
+- Map location
+
+#### D. Authorized Representative
+
+- Full name
+- Official email
+- Contact number
+- Designation
+- Employee ID
+- Government identification/reference details
+- Password
+- Confirm password
+
+#### E. Supporting Documents
+
+- Government school authorization document
+- School identification document
+- EMIS documentation, if available
+- Authorization letter of the representative
+- Other supporting documents
+
+### Government Registration Process
+
+1. Authorized representative creates an account.
+2. Representative selects GOVERNMENT SCHOOL.
+3. Representative completes the school registration form.
+4. Documents are uploaded securely.
+5. A registration request is created.
+6. The Super Admin receives a notification.
+7. Super Admin reviews school details.
+8. Super Admin can approve, reject, or request additional information.
+9. If approved, the school account becomes active.
+10. The representative receives an approval notification.
+11. The school appears in the public school directory.
+12. Its initial verification status remains UNVERIFIED unless the Super Admin explicitly verifies it.
+
+### Government Registration Status
+
+- DRAFT
+- PENDING
+- UNDER_REVIEW
+- MORE_INFORMATION_REQUIRED
+- APPROVED
+- REJECTED
+
+The government representative must be able to track registration progress.
+
+Display the official confirmation:
+
+"Your government school registration request has been successfully submitted to the Education Department."
+
+---
+
+# 4. PRIVATE SCHOOL REGISTRATION WORKFLOW
+
+Private schools must have a separate registration form with ownership-specific information.
+
+### Private School Registration Form
+
+#### A. School Information
+
+- Official school name
+- School registration number
+- School category
+- School ownership: PRIVATE
+- Education levels
+- Gender classification
+- Established year
+- Number of campuses
+- School logo
+- School photographs
+- Website (optional)
+
+#### B. Owner Information
+
+- Owner's full name
+- Owner's email
+- Phone number
+- CNIC/reference information
+- Owner designation
+- Password
+- Confirm password
+
+#### C. School Management Information
+
+- Principal name
+- School administrator name
+- Management organization (optional)
+- School contact number
+- Official email
+
+#### D. School Address
+
+- Complete address
+- Province
+- District
+- City
+- Tehsil
+- Union Council
+- Postal code
+- Map coordinates
+
+#### E. Legal and Registration Documents
+
+- Private school registration certificate
+- Ownership or management authorization
+- Applicable education department registration
+- School operating license, where required
+- Supporting documents
+
+### Private Registration Process
+
+1. Private school owner creates an account.
+2. Selects PRIVATE SCHOOL.
+3. Completes the registration form.
+4. Uploads required documents.
+5. Submits the application.
+6. The Super Admin receives a notification.
+7. Super Admin reviews the application.
+8. Super Admin accepts, rejects, or requests additional documents.
+9. Upon approval, the school owner receives dashboard access.
+10. School appears in the public directory.
+11. Initial verification status is UNVERIFIED.
+
+### Private Registration Confirmation
+
+Show this exact message after successful submission:
+
+"Your request has been successfully sent to the admin."
+
+Additional message:
+
+"Your school registration is pending approval. You will receive a notification when the Education Department reviews your application."
+
+Do not provide operational dashboard access until approval.
+
+---
+
+# 5. GOVERNMENT AND PRIVATE SCHOOL APPROVAL MANAGEMENT
+
+Create a dedicated Super Admin module called:
+
+SCHOOL REGISTRATION MANAGEMENT
+
+It must contain tabs:
+
+- All Applications
+- Government Schools
+- Private Schools
+- Pending
+- Under Review
+- Approved
+- Rejected
+- Additional Information Required
+
+### Application Table
+
+Display:
+
+- School logo
+- School name
+- Ownership type
+- Registration number
+- Representative/owner
+- District
+- Province
+- Application date
+- Registration status
+- Verification status
+- Actions
+
+### Application Details Page
+
+Display complete application information.
+
+Create a document preview section.
+
+The Super Admin must be able to inspect uploaded documents without downloading every document.
+
+Actions:
+
+- Approve Application
+- Reject Application
+- Request Additional Information
+- Keep Pending
+- Add Internal Note
+- View Application History
+
+Every administrative decision must be recorded.
+
+### Approval Rules
+
+A school must not receive approved status automatically.
+
+A government school must not automatically be verified because it belongs to the government.
+
+A private school must not automatically be rejected or marked unverified forever because it is privately operated.
+
+Approval and verification must remain independent.
+
+---
+
+# 6. SCHOOL VERIFICATION SYSTEM
+
+Create a dedicated verification management system.
+
+Every approved school has a separate verification status.
+
+Verification statuses:
+
+- UNVERIFIED
+- VERIFIED
+- SUSPENDED
+
+### Government School Verification
+
+Super Admin can:
+
+- Verify government schools.
+- Remove verification.
+- Suspend government schools.
+- Reinstate suspended schools.
+- Review government inspection history.
+- View government school documentation.
+
+### Private School Verification
+
+Super Admin can:
+
+- Verify private schools.
+- Remove verification.
+- Suspend private schools.
+- Reinstate suspended schools.
+- Review private school inspection history.
+- Review legal documentation.
+
+### Verification Details
+
+Each verification action must include:
+
+- School ID
+- Previous verification status
+- New verification status
+- Admin who performed the action
+- Date and time
+- Reason
+- Supporting documentation, if applicable
+
+### Public Verification Badges
+
+Show separate badges:
+
+GOVERNMENT SCHOOL
+PRIVATE SCHOOL
+
+And:
+
+VERIFIED BY EDUCATION DEPARTMENT
+NOT VERIFIED
+SUSPENDED
+
+Do not confuse ownership badges with verification badges.
+
+The public school profile must display both.
+
+---
+
+# 7. SUPER ADMIN DASHBOARD: OWNERSHIP-BASED ANALYTICS
+
+Build a centralized dashboard that compares government and private schools.
+
+### Global Statistics
+
+- Total Schools
+- Total Government Schools
+- Total Private Schools
+- Total Approved Schools
+- Total Pending Applications
+- Total Rejected Applications
+- Total Verified Schools
+- Total Unverified Schools
+- Total Suspended Schools
+- Total Students
+- Total Teachers
+- Total Parents
+- Total Complaints
+- Total Active Inspection Groups
+
+### Ownership Comparison Cards
+
+Create two large comparison sections.
+
+GOVERNMENT SCHOOLS:
+
+- Total registered
+- Approved
+- Pending
+- Verified
+- Unverified
+- Suspended
+- Students
+- Teachers
+- Complaints
+- Completed inspections
+
+PRIVATE SCHOOLS:
+
+- Total registered
+- Approved
+- Pending
+- Verified
+- Unverified
+- Suspended
+- Students
+- Teachers
+- Complaints
+- Completed inspections
+
+### Charts
+
+1. Government vs Private School Distribution.
+2. Government vs Private Student Enrollment.
+3. Government vs Private Teacher Distribution.
+4. Government vs Private Complaint Trends.
+5. Government vs Private Inspection Statistics.
+6. Verified vs Unverified Schools.
+7. District-Wise School Distribution.
+8. Monthly Registration Trends.
+9. Complaint Resolution Rates.
+10. Inspection Completion Rates.
+
+All statistics must be calculated using actual MongoDB records.
+
+Never use hardcoded dashboard numbers in production.
+
+### Dashboard Filters
+
+- Ownership type
+- Province
+- District
+- City
+- School category
+- Registration status
+- Verification status
+- Date range
+
+All dashboard charts and statistics must respond to selected filters.
+
+---
+
+# 8. PUBLIC SCHOOL DIRECTORY
+
+Create a public-facing school directory accessible to registered parents and guardians.
+
+The directory must contain both government and private schools.
+
+### School Directory Interface
+
+Provide:
+
+- Search bar
+- Filter sidebar
+- Grid/list toggle
+- School cards
+- Pagination
+- Sorting
+- District filtering
+
+### Search Filters
+
+Ownership:
+- All Schools
+- Government
+- Private
+
+Verification:
+- All
+- Verified
+- Unverified
+
+Location:
+- Province
+- District
+- City
+- Tehsil
+
+Education:
+- Primary
+- Elementary
+- Secondary
+- Higher Secondary
+- Technical
+- Special Education
+
+School categories:
+- Boys
+- Girls
+- Co-education
+
+### School Cards
+
+Each card must display:
+
+- School logo
+- School name
+- Government/Private badge
+- Verification badge
+- District and city
+- Education level
+- School category
+- Contact details
+- View Details button
+
+### School Profile
+
+Include:
+
+- School overview
+- Ownership information
+- Verification information
+- Address
+- Map location
+- Contact details
+- Education levels
+- Classes offered
+- Facilities
+- Public announcements
+- Inspection status where approved for public disclosure
+- Complaint submission button
+
+Never expose confidential student records or internal government notes.
+
+Only APPROVED and non-suspended schools should be publicly listed.
+
+---
+
+# 9. PARENT COMPLAINT SYSTEM FOR BOTH SCHOOL TYPES
+
+The complaint system must work identically for government and private schools.
+
+Parents can submit complaints against any approved government or private school.
+
+### Complaint Categories
+
+- Teacher Misconduct
+- School Administration
+- Student Safety
+- Harassment or Bullying
+- Unfair Treatment
+- Poor Academic Quality
+- Attendance Issues
+- Infrastructure Problems
+- Hygiene and Sanitation
+- Fee Issues
+- Unauthorized Fees
+- Missing Facilities
+- Discrimination
+- Other
+
+### Complaint Form
+
+- School
+- Ownership type (automatically populated)
+- Complaint category
+- Complaint title
+- Description
+- Related student
+- Evidence photographs
+- Supporting documents
+- Submission confirmation
+
+Generate a unique complaint number.
+
+Example: EG-CMP-2026-00001
+
+### Complaint Management
+
+Super Admin can filter complaints by:
+
+- Government schools
+- Private schools
+- Province
+- District
+- School
+- Complaint category
+- Complaint priority
+- Complaint status
+- Submission date
+
+### Complaint Lifecycle
+
+SUBMITTED
+→ UNDER_REVIEW
+→ INVESTIGATION_ASSIGNED
+→ INVESTIGATION_IN_PROGRESS
+→ REPORT_SUBMITTED
+→ ADMIN_REVIEW
+→ RESOLVED
+
+Alternative terminal state:
+
+REJECTED
+
+Parents can track the complete public complaint timeline.
+
+School owners can respond to complaints but cannot delete, hide, or alter the original complaint.
+
+Keep confidential administrative discussions private.
+
+### Ownership-Based Complaint Analytics
+
+Show:
+
+- Government school complaints
+- Private school complaints
+- Complaints per school
+- Complaints per district
+- Complaints by category
+- Resolution rate by ownership
+- Average resolution time by ownership
+- Schools with repeated complaints
+
+Use actual complaint counts and clearly distinguish raw counts from complaint rates.
+
+When comparing complaint rates, calculate them using a meaningful denominator such as enrollment or number of schools.
+
+---
+
+# 10. INSPECTION AND RAID MANAGEMENT
+
+Create one centralized inspection system covering both government and private schools.
+
+The Super Admin must be able to create inspection groups for any approved school.
+
+### Inspection Group Creation
+
+Fields:
+
+- Group name
+- Inspection ID
+- Target school
+- School ownership
+- School district
+- Inspection reason
+- Inspection type
+- Related complaints
+- Priority
+- Inspection deadline
+- Instructions
+- Assigned inspectors
+- Group leader
+
+Inspection types:
+
+- Complaint-Based Inspection
+- Routine Inspection
+- Surprise Inspection
+- Safety Inspection
+- Infrastructure Inspection
+- Academic Quality Inspection
+- Financial Compliance Inspection
+- Follow-Up Inspection
+
+### Inspection Team Management
+
+Super Admin can:
+
+- Create inspector accounts.
+- Add inspectors to groups.
+- Remove members before final submission.
+- Assign a group leader.
+- Change the group leader.
+- View inspector profiles.
+- Monitor investigation progress.
+- View uploaded evidence.
+- Send instructions.
+
+### Inspector Permissions
+
+Inspectors can access only their assigned inspection groups and authorized school information.
+
+Group members can:
+
+- Record observations.
+- Upload photographs.
+- Upload documents.
+- Submit individual findings.
+- Add timestamps.
+- Add inspection notes.
+
+Group leaders can:
+
+- Review member findings.
+- Request additional evidence.
+- Coordinate tasks.
+- Prepare final reports.
+- Submit reports to the Super Admin.
+
+### Inspection Workflow
+
+1. Super Admin creates an inspection group.
+2. Selects a government or private school.
+3. Links relevant complaints.
+4. Adds inspectors.
+5. Assigns a group leader.
+6. Group receives an assignment.
+7. Inspectors perform their work.
+8. Inspectors submit individual findings.
+9. Group leader reviews submissions.
+10. Group leader creates the final report.
+11. Group leader submits the report.
+12. Status becomes REPORT_SUBMITTED.
+13. Super Admin reviews the report.
+14. Super Admin approves it or requests revisions.
+15. Approved inspection becomes COMPLETED.
+16. Group status becomes CLOSED.
+
+A submitted report must never automatically close the group.
+
+### Inspection Report
+
+Include:
+
+- School information
+- School ownership type
+- School registration number
+- Verification status
+- Inspection type
+- Inspection date
+- Inspection team
+- Group leader
+- Related complaint IDs
+- Detailed findings
+- Evidence
+- Photographs
+- Documents
+- Violations
+- Risk assessment
+- Recommendations
+- Corrective action requirements
+- Final conclusion
+- Group leader details
+- Submission timestamp
+
+### Corrective Actions
+
+The Super Admin can create corrective action orders.
+
+Fields:
+
+- School
+- Identified issue
+- Required correction
+- Responsible party
+- Deadline
+- Priority
+- Supporting documents
+- Current status
+
+Statuses:
+
+- PENDING
+- IN_PROGRESS
+- COMPLETED
+- OVERDUE
+- VERIFIED_BY_ADMIN
+
+Schools can submit evidence of corrective action.
+
+The Super Admin can review and accept or reject the submitted evidence.
+
+---
+
+# 11. SCHOOL MANAGEMENT FEATURES FOR BOTH CATEGORIES
+
+Both government and private school dashboards must support the same core academic modules.
+
+### Student Management
+
+- Add students.
+- Edit student profiles.
+- Assign admission numbers.
+- Assign classes.
+- Assign sections.
+- Assign roll numbers.
+- Promote students.
+- Transfer students.
+- Archive graduated students.
+- Bulk CSV import.
+
+### Teacher Management
+
+- Add teachers.
+- Assign subjects.
+- Assign classes.
+- Assign sections.
+- Manage teacher profiles.
+- Track attendance.
+
+### Class Management
+
+- Create grades.
+- Create sections.
+- Assign class teachers.
+- Manage academic sessions.
+- Manage class capacity.
+
+### Attendance
+
+- Student attendance.
+- Teacher attendance.
+- Daily attendance.
+- Monthly reports.
+- Attendance percentages.
+- Parent notifications.
+
+### Examinations
+
+- Create examinations.
+- Create subjects.
+- Enter marks.
+- Calculate grades.
+- Generate report cards.
+- Publish results.
+
+### Fees
+
+- Create fee structures.
+- Record payments.
+- Generate receipts.
+- Track unpaid fees.
+- View payment history.
+
+### Timetables
+
+- Create schedules.
+- Assign teachers.
+- Assign subjects.
+- Assign classrooms.
+- Detect scheduling conflicts.
+
+### Communication
+
+- School announcements.
+- Parent communication.
+- Teacher communication.
+- Official notices.
+- In-app notifications.
+
+IMPORTANT:
+
+Do not create separate duplicated student, teacher, attendance, examination, or fee systems for government and private schools.
+
+Use shared modules and school-specific data isolation.
+
+---
+
+# 12. OWNERSHIP-SPECIFIC ADMINISTRATIVE POLICIES
+
+The Super Admin must be able to configure policies for both school categories.
+
+Examples:
+
+Government school policies:
+- Required official identifiers.
+- Government representative authorization.
+- Applicable government documentation.
+- Administrative reporting requirements.
+
+Private school policies:
+- Required registration certificates.
+- Ownership documentation.
+- Applicable licensing information.
+- Administrative reporting requirements.
+
+Policy configuration should support:
+
+- Ownership type
+- Province
+- District
+- School category
+- Effective date
+- Required documents
+- Active/inactive status
+
+Do not hardcode legal requirements that may vary by jurisdiction.
+
+Allow authorized administrators to configure the requirements.
+
+---
+
+# 13. MONGODB DATABASE DESIGN
+
+Create properly normalized and indexed Mongoose schemas.
+
+### School Model
+
+Fields:
+
+- name
+- slug
+- schoolCode
+- emisCode
+- registrationNumber
+- schoolType: GOVERNMENT | PRIVATE
+- schoolCategory
+- educationLevels
+- genderType
+- establishedYear
+- logo
+- photographs
+- address
+- province
+- district
+- city
+- tehsil
+- unionCouncil
+- location
+- owner
+- authorizedRepresentatives
+- registrationStatus
+- verificationStatus
+- approvedBy
+- approvedAt
+- verifiedBy
+- verifiedAt
+- rejectionReason
+- suspensionReason
+- documents
+- createdAt
+- updatedAt
+
+### School Ownership Rules
+
+schoolType, registrationStatus, and verificationStatus must be independent fields.
+
+Do not combine these fields into a single status.
+
+### Other Collections
+
+Create the following collections:
+
+1. Users
+2. Schools
+3. SchoolApplications
+4. SchoolDocuments
+5. Classes
+6. Sections
+7. Students
+8. Teachers
+9. Subjects
+10. ParentStudentRelationships
+11. Attendance
+12. Examinations
+13. Results
+14. FeeStructures
+15. Payments
+16. Timetables
+17. Announcements
+18. Complaints
+19. ComplaintMessages
+20. ComplaintTimeline
+21. InspectionGroups
+22. InspectionMembers
+23. InspectionTasks
+24. InspectionFindings
+25. InspectionReports
+26. CorrectiveActions
+27. Conversations
+28. Messages
+29. Notifications
+30. VerificationHistory
+31. AuditLogs
+32. SystemSettings
+33. Districts
+34. Provinces
+
+Use ObjectId references where appropriate.
+
+Add indexes for:
+
+- schoolType
+- registrationStatus
+- verificationStatus
+- district
+- province
+- schoolCode
+- school owner
+- complaint status
+- inspection status
+- email
+- student admission number
+
+Use compound indexes for common queries.
+
+Prevent duplicate school registrations and duplicate accounts through appropriate unique constraints and validation.
+
+---
+
+# 14. ROLE-BASED DATA ISOLATION
+
+Implement strict RBAC.
+
+SUPER_ADMIN:
+- Global platform access.
+- All government schools.
+- All private schools.
+- All users.
+- All complaints.
+- All inspection groups.
+- All reports.
+- System settings.
+
+SCHOOL_OWNER:
+- Access only to their authorized school or schools.
+- Manage their school's academic records.
+- View complaints associated with their schools.
+- Respond to complaints.
+- View their inspection-related notices.
+- Cannot access another school's confidential information.
+
+PARENT:
+- Access their own account.
+- View public school directory.
+- Access only approved connected children.
+- Submit complaints.
+- Track their own complaints.
+- Cannot access other parents' information.
+
+STUDENT:
+- Access their own academic records.
+- View attendance.
+- View results.
+- View timetable.
+- View announcements.
+
+INSPECTOR:
+- Access assigned inspection groups only.
+- View authorized target school information.
+- Submit inspection findings.
+- Upload evidence.
+- Cannot change school registration or verification.
+- Cannot resolve complaints independently.
+- Cannot close inspection groups.
+
+GROUP_LEADER:
+- All inspector permissions.
+- Manage group investigation tasks.
+- Review team submissions.
+- Submit the final report.
+
+Every protected backend route must validate permissions independently.
+
+Never rely only on hiding frontend buttons.
+
+---
+
+# 15. UI/UX DESIGN REQUIREMENTS
+
+Build a premium, modern government technology platform.
+
+The interface should look like a professional education department management portal, not a generic school website.
+
+### Design Style
+
+- Clean professional layout.
+- Modern sidebar navigation.
+- Minimal visual clutter.
+- Consistent spacing.
+- Professional typography.
+- Responsive tables.
+- Data-rich dashboards.
+- Subtle animations.
+- Accessible color contrast.
+- Clear status badges.
+- Reusable design components.
+
+### Theme System
+
+Implement three modes:
+
+1. LIGHT MODE
+2. DARK MODE
+3. SYSTEM MODE
+
+System mode must follow the user's operating-system theme.
+
+Persist the selected theme.
+
+Ensure every page, table, modal, chart, dropdown, sidebar, and form supports all three modes.
+
+### Color System
+
+Use a professional government-technology visual identity.
+
+Suggested palette:
+
+- Primary: Deep Navy Blue
+- Secondary: Royal Blue
+- Accent: Teal
+- Success: Green
+- Warning: Amber
+- Danger: Red
+- Background: Neutral gray/white in light mode
+- Background: Deep charcoal/navy in dark mode
+
+Use consistent colors for:
+
+- Government School badges.
+- Private School badges.
+- Verified status.
+- Unverified status.
+- Pending applications.
+- Rejected applications.
+- Active inspections.
+- Resolved complaints.
+
+Never rely on color alone to communicate status.
+
+### Navigation
+
+Super Admin sidebar:
+
+- Overview
+- School Applications
+- All Schools
+- Government Schools
+- Private Schools
+- Verification
+- Users
+- Complaints
+- Inspection Groups
+- Inspection Reports
+- Corrective Actions
+- Messages
+- Analytics
+- Settings
+
+School Owner sidebar:
+
+- Dashboard
+- School Profile
+- Students
+- Teachers
+- Classes
+- Sections
+- Subjects
+- Attendance
+- Examinations
+- Results
+- Fees
+- Timetable
+- Announcements
+- Parent Requests
+- Complaints
+- Admin Messages
+- Settings
+
+Parent sidebar:
+
+- Dashboard
+- School Directory
+- My Children
+- Attendance
+- Results
+- Fees
+- Timetable
+- Announcements
+- Submit Complaint
+- My Complaints
+- Notifications
+- Profile
+
+Inspector sidebar:
+
+- Dashboard
+- My Inspection Groups
+- Assigned Schools
+- Investigation Tasks
+- Findings
+- Evidence Uploads
+- Inspection Reports
+- Notifications
+- Profile
+
+---
+
+# 16. SEARCH, FILTERING, AND REPORTING
+
+All major modules must support:
+
+- Search.
+- Pagination.
+- Sorting.
+- Filtering.
+- Date ranges.
+- Status filters.
+- Export to CSV where appropriate.
+
+The Super Admin must be able to generate reports by:
+
+- Government schools.
+- Private schools.
+- Province.
+- District.
+- School category.
+- Registration status.
+- Verification status.
+- Complaint category.
+- Complaint status.
+- Inspection status.
+- Date range.
+
+Reports should contain:
+
+- Report title.
+- Generated date.
+- Selected filters.
+- Summary.
+- Tables.
+- Charts where appropriate.
+
+Support PDF and CSV exports for authorized users.
+
+---
+
+# 17. NOTIFICATIONS
+
+Implement in-app notifications and email notifications.
+
+Events:
+
+- School registration submitted.
+- School registration approved.
+- School registration rejected.
+- Additional documents requested.
+- School verification updated.
+- Parent registered.
+- Parent account blocked.
+- Student connection requested.
+- Student connection approved.
+- New complaint submitted.
+- Complaint status changed.
+- Inspection group created.
+- Inspector assigned.
+- Inspection deadline approaching.
+- Finding submitted.
+- Final report submitted.
+- Report approved.
+- Report revision requested.
+- Corrective action issued.
+- Corrective action deadline approaching.
+- Corrective action accepted.
+
+Each notification should have:
+
+- Recipient
+- Notification type
+- Title
+- Message
+- Related resource
+- Read status
+- Timestamp
+
+---
+
+# 18. SECURITY AND AUDIT LOGGING
+
+Implement:
+
+- Secure password hashing with bcrypt.
+- JWT authentication.
+- Refresh token rotation.
+- Secure cookie handling where applicable.
+- Email verification.
+- Rate limiting.
+- Request validation.
+- CORS restrictions.
+- Helmet security headers.
+- File upload validation.
+- File size limits.
+- Authorization middleware.
+- Protection against IDOR.
+- Protection against mass assignment.
+- Secure password reset.
+- Account blocking and session revocation.
+
+### Audit Logs
+
+Record sensitive actions:
+
+- School approval.
+- School rejection.
+- School verification.
+- Verification removal.
+- School suspension.
+- User blocking.
+- User unblocking.
+- Complaint status changes.
+- Inspection group creation.
+- Inspector assignment.
+- Report approval.
+- Corrective action creation.
+
+Audit log fields:
+
+- User
+- Role
+- Action
+- Target resource
+- Previous values
+- New values
+- Timestamp
+- IP address where appropriate
+
+Audit logs must not be editable by normal users.
+
+---
+
+# 19. BACKEND API MODULES
+
+Create REST API endpoints organized by domain.
+
+Suggested route structure:
+
+/api/v1/auth
+/api/v1/users
+/api/v1/schools
+/api/v1/school-applications
+/api/v1/verification
+/api/v1/classes
+/api/v1/sections
+/api/v1/students
+/api/v1/teachers
+/api/v1/subjects
+/api/v1/parent-student
+/api/v1/attendance
+/api/v1/examinations
+/api/v1/results
+/api/v1/fees
+/api/v1/payments
+/api/v1/timetables
+/api/v1/announcements
+/api/v1/complaints
+/api/v1/complaint-messages
+/api/v1/inspection-groups
+/api/v1/inspection-tasks
+/api/v1/inspection-findings
+/api/v1/inspection-reports
+/api/v1/corrective-actions
+/api/v1/messages
+/api/v1/notifications
+/api/v1/analytics
+/api/v1/reports
+/api/v1/audit-logs
+/api/v1/settings
+
+Implement proper controllers, services, models, validators, and middleware.
+
+All endpoints must enforce authentication, authorization, input validation, and school-level data isolation.
+
+---
+
+# 20. IMPORTANT BUSINESS RULES
+
+1. Government and private schools must use the same platform.
+
+2. Both school categories require registration review.
+
+3. Only approved schools can access operational school management modules.
+
+4. Approved does not automatically mean verified.
+
+5. Government schools are not automatically verified.
+
+6. Private schools are not automatically unverified.
+
+7. The Super Admin controls verification.
+
+8. Parents can register without Super Admin approval.
+
+9. The Super Admin can block parents.
+
+10. Blocked accounts cannot access protected APIs.
+
+11. Parents can complain about both government and private schools.
+
+12. School owners cannot delete parent complaints.
+
+13. Inspectors only access assigned inspection groups.
+
+14. Group leaders submit final inspection reports.
+
+15. The Super Admin must approve final reports before inspection closure.
+
+16. Corrective actions must be tracked independently from complaint status.
+
+17. Every sensitive administrative action must be recorded in audit logs.
+
+18. Student information must only be accessible to authorized users.
+
+19. Ownership type must not determine academic module availability.
+
+20. School suspension must restrict operational access according to administrative policy without deleting historical records.
+
+21. Historical complaints, inspection reports, and audit records must remain available to authorized administrators even when a school is suspended.
+
+22. Multi-campus private school organizations must be supported through a parent organization and separate campus records. Government school hierarchy should also support district and regional administrative structures.
+
+---
+
+# 21. DEVELOPMENT EXECUTION PLAN
+
+Build the application in the following phases.
+
+PHASE 1:
+- Project initialization.
+- Frontend and backend setup.
+- MongoDB connection.
+- Authentication.
+- User models.
+- RBAC middleware.
+- Theme system.
+
+PHASE 2:
+- Government school registration.
+- Private school registration.
+- School application management.
+- Approval and rejection workflows.
+- School verification.
+
+PHASE 3:
+- Super Admin dashboard.
+- Government/private analytics.
+- School directory.
+- School profile pages.
+- Search and filtering.
+
+PHASE 4:
+- School owner dashboard.
+- Student management.
+- Teacher management.
+- Class and section management.
+- Parent-student connections.
+
+PHASE 5:
+- Attendance.
+- Examinations.
+- Results.
+- Fees.
+- Timetables.
+- Announcements.
+
+PHASE 6:
+- Parent dashboard.
+- Complaint submission.
+- Complaint tracking.
+- School owner responses.
+- Complaint analytics.
+
+PHASE 7:
+- Inspector accounts.
+- Inspection groups.
+- Group leader assignment.
+- Investigation tasks.
+- Evidence uploads.
+- Final inspection reports.
+- Admin report approval.
+- Group closure.
+
+PHASE 8:
+- Corrective actions.
+- Admin-school messaging.
+- Notifications.
+- Email integration.
+- Audit logs.
+
+PHASE 9:
+- Reports and exports.
+- Advanced analytics.
+- Performance optimization.
+- Security testing.
+- Responsive testing.
+
+---
+
+# 22. DEVELOPMENT QUALITY REQUIREMENTS
+
+Do not generate only UI screens.
+
+Implement working CRUD operations, database persistence, API integration, authentication, authorization, validation, and error handling.
+
+Requirements:
+
+- No fake dashboard statistics.
+- No non-functional buttons.
+- No dead navigation links.
+- No hardcoded users in production.
+- No hardcoded school records in production.
+- No plain-text passwords.
+- No frontend-only authorization.
+- No duplicate business logic.
+- No direct MongoDB access from the frontend.
+- No leaking data across schools.
+- No exposing internal complaint or inspection notes to unauthorized users.
+
+Use realistic seed data only for development and testing.
+
+Create separate test accounts for:
+
+- Super Admin
+- Government School Representative
+- Private School Owner
+- Parent
+- Student
+- Inspector
+- Inspection Group Leader
+
+Test all role permissions and important workflows.
+
+Build reusable loading states, empty states, error states, confirmation dialogs, and success notifications.
+
+---
+
+# 23. FINAL ACCEPTANCE CRITERIA
+
+The application is considered complete only when:
+
+1. Government schools can register successfully.
+2. Private schools can register successfully.
+3. Super Admin can approve or reject both categories.
+4. Approved schools receive operational dashboard access.
+5. Government and private schools are displayed separately in analytics.
+6. Both categories appear in the public school directory.
+7. Verification works independently of ownership type.
+8. Parents can register without admin approval.
+9. Parents can connect their children to schools.
+10. Parents can submit complaints against either category.
+11. School owners can respond to complaints.
+12. Super Admin can create inspection groups.
+13. Super Admin can add inspectors.
+14. Super Admin can appoint group leaders.
+15. Inspectors can upload evidence and findings.
+16. Group leaders can submit final inspection reports.
+17. Super Admin can review and approve reports.
+18. Approved inspection groups become closed.
+19. Corrective actions can be created and tracked.
+20. School academic modules work for both ownership categories.
+21. Role-based data isolation is enforced.
+22. Light, dark, and system themes work throughout the application.
+23. All important records persist in MongoDB.
+24. The application is responsive on desktop, tablet, and mobile.
+25. Security, validation, and audit logging work correctly.
+
+## FINAL INSTRUCTION TO GOOGLE AI STUDIO
+
+First analyze the entire specification and establish the architecture, database relationships, role permissions, and development sequence.
+
+Do not attempt to generate the entire application as one enormous code dump.
+
+Implement the application phase by phase while preserving the agreed architecture.
+
+Before implementing a module, identify its dependencies and required database models.
+
+After each phase:
+
+- Check TypeScript errors.
+- Check frontend compilation.
+- Check backend execution.
+- Check API integration.
+- Check MongoDB persistence.
+- Check authorization.
+- Test the complete workflow.
+- Fix errors before proceeding.
+
+Maintain a development checklist and track completed, incomplete, and blocked tasks.
+
+Never silently remove a requested feature to simplify implementation.
+
+If a feature requires an external service, implement its integration using environment variables and provide a clear setup guide.
+
+The final result must be a cohesive, functional, secure, government-grade education management platform supporting BOTH GOVERNMENT AND PRIVATE SCHOOLS.

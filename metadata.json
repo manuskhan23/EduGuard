@@ -1,0 +1,6 @@
+{
+  "name": "EduGuard — Education Department & School Governance Platform",
+  "description": "Centralized government and private school administration, registration approval, independent verification, public directory, parent complaints, and inspection management platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
